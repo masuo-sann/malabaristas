@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+:root {
+	--main_color: #395de7;
+	--sub_color: #f0eff1;
+	--back_color:#c3c0c6;
+}
+
+#btn:hover{
+	opacity:0.7;
+}
+
+.bar{
+	font-family: 'Courier New', sans-serif;
+	color: var(--sub_color);
+	background: var(--main_color);
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.title{
+	font-size: 30px;
+	font-weight: bolder;
+	text-align:left;
+	float: left;
+	padding: 15px 0px 5px 20px;
+	cursor: pointer;
+}
+
+.nav{
+	float: right;
+	list-style-type: none;
+	margin-right: 20px;
+	padding: 0;
+	overflow: hidden;
+}
+
+li{
+	float: left;
+	font-size: 18px;
+	color: var(--sub_color);
+	cursor: pointer;
+
+	border-left: 1px solid var(--sub_color);
+}
+
+li:first-child{
+	border-left: none;
+}
+li a{
+	display: block;
+	color: var(--sub_color);
+	text-align: center;
+	padding: 7px 16px;
+	text-decoration: none;
+}
+
+li a: hover{
+	background-color:  var(--sub_color);
+	color: var(--main_color);
+}
+
+/* assignJobStateColor()の結果 */
+.ready_color {
+	color: #00ff00;
+}
+.running_color {
+	color: #ff7f00;
+}
+.not_ready_color {
+	color: #ff0000;
+}

@@ -1,0 +1,244 @@
+@charset "UTF-8";
+
+:root {
+	--main_color: #395de7;
+	--sub_color: #f0eff1;
+	--accent_color:#009a9a;
+}
+
+body {
+	text-align: center;
+}
+
+#text-right {
+	text-align: right;
+}
+
+.search_wrapper {
+	position: fixed;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.search_management {
+	margin-top: 50px;
+}
+
+.search_window {
+	margin: auto;
+	width: 400px;
+	height: 80px;
+	border-radius: 40px;
+	background-color: var(--sub_color);
+	border: solid 1px var(--main_color);
+}
+
+.search_window input {
+	position: relative;
+	top: 2px;
+	left: 0px;
+	width: 300px;
+	height: 70px;
+	background-color: var(--sub_color);
+	border: 0;
+	outline: 0;
+
+	font-size: 30px;
+	color: var(--main_color);
+}
+
+.search_window:hover {
+	opacity: 0.9;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
+}
+
+.filter_box {
+	position: relative;
+    margin: auto;
+    margin-top: 50px;
+    padding: 0.5em 1em;
+    border: solid 3px var(--main_color);
+    border-radius: 8px;
+    width: 300px;
+}
+
+.filter_icon {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	border: solid 3px var(--main_color);
+	position: absolute;
+	top: -15px;
+    left: 10px;
+    background: white;
+}
+
+.filter_icon svg {
+	fill: var(--main_color);
+	position: relative;
+	z-index: 10;
+	top: 5px
+}
+
+hr {
+	height: 1px;
+	widrh: 250px;
+	border: none;
+	border-top: 2px var(--main_color) dashed;
+}
+
+.filter_options {
+	margin: 0;
+    padding: 0;
+}
+
+#option {
+	text-align: left;
+	margin-top: 3px;
+	display: inline-block;
+	width: 280px;
+}
+
+#option #question {
+	float: left;
+}
+
+#option #answer {
+	float: right;
+	position: relative;
+	right: 0%;
+	width: 130px;
+	vertival-align: top;
+}
+
+#option #answer input[type="text"] {
+	width: 90px;
+	height: 30px;
+	background-color: var(--sub_color);
+	position: relative;
+	left: 0%;
+	border: 0;
+	border-bottom: 1px var(--main_color) solid;
+	outline: 0;
+	color: var(--accent_color);
+	font-size: 20px;
+	text-align: right;
+}
+
+#option #answer input[type="text"]:hover {
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,.24), 0 1px 1px 0 rgba(0,0,0,.22), 0 1px 2px -1px rgba(0,0,0,.3);
+}
+
+#option #answer label {
+	cursor: pointer;
+}
+
+.radio_input {
+	display: none;
+	float: left;
+}
+
+.radio_input + label {
+	padding-left: 20px;
+	position:relative;
+	margin-right: 20px;
+}
+
+.radio_input + label::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #999;
+	border-radius: 50%;
+}
+
+.radio_input:checked + label{
+	color: var(--accent_color);
+}
+.radio_input:checked + label::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 11px;
+	height: 11px;
+	background: var(--accent_color);
+	border-radius: 50%;
+}
+
+.checkbox_input {
+	display: none;
+	float: left;
+}
+.checkbox_parts {
+	padding-left: 20px;
+	position:relative;
+	margin-right: 20px;
+}
+.checkbox_parts::before{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #999;
+	border-radius: 4px;
+}
+.checkbox_input:checked + .checkbox_parts{
+	color: var(--accent_color);
+}
+.checkbox_input:checked + .checkbox_parts::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 5px;
+	width: 7px;
+	height: 14px;
+	transform: rotate(40deg);
+	border-bottom: 3px solid var(--accent_color);
+	border-right: 3px solid var(--accent_color);
+}
+
+.search {
+	position: fixed;
+	right: 10%;
+	bottom: 10%;
+}
+
+.search svg{
+	fill: var(--sub_color);
+	position: relative;
+	top: 10px;
+	z-index: 160;
+}
+
+#fab {
+	display: block;
+	width: 60px;
+	height: 60px;
+	background: var(--main_color);
+	text-align: center;
+	border-radius: 50%;
+	transition: .3s;
+	box-shadow: 0 2px 2px 1px rgba(0,0,0,.22), 0 2px 2px 1px rgba(0,0,0,.34);
+
+	z-index: 150;
+}
+
+#fab:hover {
+	opacity: 0.9;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
+	cursor: pointer;
+}
+
+
