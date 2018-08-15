@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<link rel="stylesheet" type="text/css" href="css/schedule.css">
 		<link rel="stylesheet" type="text/css" href="css/member.css">
 
 
@@ -23,26 +24,24 @@
 
 		<script src="js/server/index.js"></script>
 		<script src="js/server/home.js"></script>
+		<script src="js/server/schedule.js"></script>
 		<script src="js/server/member.js"></script>
 
 		<script src="js/controller/index.js"></script>
 		<script src="js/controller/home.js"></script>
+		<script src="js/controller/schedule.js"></script>
 		<script src="js/controller/member.js"></script>
 
 	</head>
 	<body>
 		<div class="bar">
-			<span id="btn" class="title" ng-click="clickTitle()">MJF Operation</span>
+			<span id="btn" class="title" ng-click="clickTitle()">MJF OPERATION</span>
 			<ul class="nav">
-				<li><a id="btn" href="#/home">HOME</a></li>
-				<li><a id="btn" href={{datastudio_uri}} target="_blank">???</a></li>
+				<li><a id="btn" class="here" href="#/home">HOME</a></li>
+				<li><a id="btn" href="#/schedule">SCHEDULE</a></li>
 				<li><a id="btn" href="#/member">MEMBER</a></li>
 			</ul>
 		</div>
-
-		<span class="settings-child">設定
-		</span>
-
 		<div ng-view>
 		</div>
 	</body>

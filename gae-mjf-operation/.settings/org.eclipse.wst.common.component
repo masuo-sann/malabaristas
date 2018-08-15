@@ -2,6 +2,7 @@
     <wb-module deploy-name="gae-mjf-operation">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
         <property name="context-root" value="gae-mjf-operation"/>
         <property name="java-output-path" value="/gae-mjf-operation/build/classes"/>
     </wb-module>

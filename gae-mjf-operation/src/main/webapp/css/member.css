@@ -10,8 +10,16 @@ body {
 	text-align: center;
 }
 
+.modal_body {
+	background-color: white;
+}
+
 #text-right {
 	text-align: right;
+}
+
+#text-left {
+	text-align: left;
 }
 
 .search_wrapper {
@@ -52,14 +60,18 @@ body {
 	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
 }
 
-.filter_box {
+
+.member_add_box {
 	position: relative;
-    margin: auto;
-    margin-top: 50px;
-    padding: 0.5em 1em;
-    border: solid 3px var(--main_color);
-    border-radius: 8px;
-    width: 300px;
+	margin: auto;
+	margin-top: -30px;
+	padding: 0.5em 1em;
+	border: solid 3px var(--main_color);
+	border-radius: 8px;
+	width: 500px;
+	background-color: white;
+	box-shadow: 0 4px 6px 0 rgba(0,0,0,.5), 0 4px 4px 0 rgba(0,0,0,.5), 0 2px 4px -1px rgba(0,0,0,.6);
+	z-index: 160;
 }
 
 .filter_icon {
@@ -84,32 +96,33 @@ body {
 
 hr {
 	height: 1px;
-	widrh: 250px;
+	width: 500px;
 	border: none;
 	border-top: 2px var(--main_color) dashed;
 }
 
-.filter_options {
+.member_add_options {
 	margin: 0;
     padding: 0;
 }
 
 #option {
-	text-align: left;
 	margin-top: 3px;
 	display: inline-block;
-	width: 280px;
+	width: 480px;
 }
 
 #option #question {
+	text-align: left;
 	float: left;
 }
 
 #option #answer {
+	text-align: right;
 	float: right;
 	position: relative;
 	right: 0%;
-	width: 130px;
+	width: 250px;
 	vertival-align: top;
 }
 
@@ -118,14 +131,19 @@ hr {
 	height: 30px;
 	background-color: var(--sub_color);
 	position: relative;
-	left: 0%;
+	right: 0%;
 	border: 0;
 	border-bottom: 1px var(--main_color) solid;
 	outline: 0;
 	color: var(--accent_color);
 	font-size: 20px;
-	text-align: right;
+	text-align: center;
 }
+
+#option #answer #text_input {
+	width: 200px;
+}
+
 
 #option #answer input[type="text"]:hover {
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,.24), 0 1px 1px 0 rgba(0,0,0,.22), 0 1px 2px -1px rgba(0,0,0,.3);
@@ -209,33 +227,43 @@ hr {
 	border-right: 3px solid var(--accent_color);
 }
 
-.search {
+#flat_btn {
+	margin: 30px;
+
+}
+
+#flat_btn:hover{
+	font: bold;
+	color: var(--accent_color);
+	cursor: pointer;
+}
+
+.add {
 	position: fixed;
 	right: 10%;
 	bottom: 10%;
 }
 
-.search svg{
+.add svg{
 	fill: var(--sub_color);
 	position: relative;
 	top: 10px;
 	z-index: 160;
 }
 
-#fab {
+#add_fab {
 	display: block;
 	width: 60px;
 	height: 60px;
-	background: var(--main_color);
+	background: #e6224a;
 	text-align: center;
 	border-radius: 50%;
 	transition: .3s;
 	box-shadow: 0 2px 2px 1px rgba(0,0,0,.22), 0 2px 2px 1px rgba(0,0,0,.34);
-
 	z-index: 150;
 }
 
-#fab:hover {
+#add_fab:hover {
 	opacity: 0.9;
 	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
 	cursor: pointer;

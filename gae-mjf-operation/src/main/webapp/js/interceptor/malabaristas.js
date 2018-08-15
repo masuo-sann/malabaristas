@@ -7,6 +7,9 @@ MALABARISTAS_APP.config(function($httpProvider, $routeProvider) {
 	.when('/home', {
 		templateUrl: '/template/home.html'
 	})
+	.when('/schedule', {
+		templateUrl: '/template/schedule.html'
+	})
 	.when('/member', {
 		templateUrl: '/template/member.html'
 	})
