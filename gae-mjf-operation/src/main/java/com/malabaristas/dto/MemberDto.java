@@ -1,27 +1,14 @@
-package com.malabaristas.model;
-
-import java.util.Date;
-
-import org.slim3.datastore.Attribute;
-import org.slim3.datastore.Model;
-
-import com.google.appengine.api.datastore.Key;
+package com.malabaristas.dto;
 
 /**
- * Modelの変更はHTML上のフォーム、それを受け取るjs、サーバーサイドのMemberDtoおよびMemberListDtoおよび
- * それらを操作するActionとLogicの全てに変更が加わると考えられる。
+ * jsに返すためにJSONに変換する際に用いるオブジェクト
+ * model.Memberと同じ値をもつ。 keyはKey型をlong型として用いる。
  * @author ishino
  *
  */
-@Model
-public class Member {
-
-	@Attribute(primaryKey=true)
-	private Key key;
+public class MemberDto {
+	private String strKey;
 	private long id;
-	private Date updateDate;
-	private Date registerDate;
-	private int version;
 
 	private String lastName;
 	private String firstName;
@@ -57,46 +44,84 @@ public class Member {
 	private String status;
 	private int rest;
 
+	public static enum Where {
+		ONE("ONE"), TWO("TWO"), THREE("THREE"), PRESENT("PRESENT"), ABSENT("ABSENT");
 
-	public Key getKey() {
-		return key;
+		private String name;
+
+		private Where(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
 	}
 
-	public void setKey(Key key) {
-		this.key = key;
+	public static enum Status {
+		WORKING("WORKING"), BORED("BORED"), SABORI("SABORI");
+
+		private String name;
+
+		private Status(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
 	}
+
+	public static enum Parameter {
+		METHOD("method"), STR_KEY("strKey"), ID("id"),
+		LAST_NAME("lastName"), FIRST_NAME("firstName"), GRADE("grade"),
+		QUALIFICATION_OF_LIGHT("qualificationOfLight"), QUALIFICATION_OF_LIGHT_MANAGEMENT("qualificationOfLightManagement"),
+		LIGHT_OPERATOR("lightOperator"), MUSIC_OPERATOR("musicOperator"), TOOL_PERSON("toolPerson"),
+		MARKING_STAGE("markingStage"), LINO_COVERING("linoCovering"), STAGE("stage"), SEATS("seats"),
+		TWISTING_BIND("twistingBind"), TYING_BIND("tyingBind"), GUARD("guard"),
+		HUNGING_CURTAIN("hungingCurtain"), HUNGING_LIGHTS("hungingLights"), SHOOT("shoot"), FOLDING_CURTAIN("foldingCurtain"),
+		TOTAL_EXPERIENCE("totalExperience"),THIS_YEARS_EXPERIENCE("thisYearsExperience"), LAST_YEARS_EXPERIENCE("lastYearsExperience"),
+		WHERE("where"), STATUS("status"), REST("rest");
+
+		private String name;
+
+		private Parameter(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+
+	public MemberDto() {
+	}
+
+
+
+	public String getStrKey() {
+		return strKey;
+	}
+
+
+
+	public void setStrKey(String strKey) {
+		this.strKey = strKey;
+	}
+
+
 
 	public long getId() {
 		return id;
 	}
 
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	public Date getRegisterDate() {
-		return registerDate;
-	}
-
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
 
 	public String getLastName() {
 		return lastName;
@@ -142,25 +167,31 @@ public class Member {
 		return stage;
 	}
 
+
 	public void setStage(int stage) {
 		this.stage = stage;
 	}
+
 
 	public int getHungingCurtain() {
 		return hungingCurtain;
 	}
 
+
 	public void setHungingCurtain(int hungingCurtain) {
 		this.hungingCurtain = hungingCurtain;
 	}
+
 
 	public int getHungingLights() {
 		return hungingLights;
 	}
 
+
 	public void setHungingLights(int hungingLights) {
 		this.hungingLights = hungingLights;
 	}
+
 
 	public String getTotalExperience() {
 		return totalExperience;

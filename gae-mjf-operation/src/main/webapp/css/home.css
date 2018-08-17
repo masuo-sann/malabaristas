@@ -14,14 +14,14 @@ body {
 	text-align: right;
 }
 
-.search_wrapper {
-	position: fixed;
+.home_wrapper {
+	position: relative;
+	top: 120px;
 	width: 100%;
-	margin-top: 50px;
+	overflow: scroll;
 }
 
 .search_management {
-	margin-top: 50px;
 }
 
 .search_window {
@@ -55,7 +55,6 @@ body {
 .filter_box {
 	position: relative;
     margin: auto;
-    margin-top: 50px;
     padding: 0.5em 1em;
     border: solid 3px var(--main_color);
     border-radius: 8px;
@@ -64,7 +63,6 @@ body {
 
 .filter_icon {
 	display: inline-block;
-	width: 40px;
 	height: 40px;
 	text-align: center;
 	border-radius: 50%;
