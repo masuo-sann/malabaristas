@@ -3,45 +3,37 @@ package com.malabaristas.dto;
 public class ExperienceDto {
 
 	private String stage;
-	private String hangingCurtain;
-	private String hangingLights;
+	private String hungingCurtain;
+	private String hungingLights;
 
-
-	public ExperienceDto(String stage, String hangingCurtain, String hangingLights) {
-		this.setStage(stage);
-		this.setHangingCurtain(hangingCurtain);
-		this.setHangingLights(hangingLights);
+	public ExperienceDto(String stage, String hungingCurtain, String hungingLights) {
+		super();
+		this.stage = stage;
+		this.hungingCurtain = hungingCurtain;
+		this.hungingLights = hungingLights;
 	}
-
 
 	public String getStage() {
 		return stage;
 	}
 
-
 	public void setStage(String stage) {
 		this.stage = stage;
 	}
 
-
-	public String getHangingCurtain() {
-		return hangingCurtain;
+	public String getHungingCurtain() {
+		return hungingCurtain;
 	}
 
-
-	public void setHangingCurtain(String hangingCurtain) {
-		this.hangingCurtain = hangingCurtain;
+	public void setHungingCurtain(String hungingCurtain) {
+		this.hungingCurtain = hungingCurtain;
 	}
 
-
-	public String getHangingLights() {
-		return hangingLights;
+	public String getHungingLights() {
+		return hungingLights;
 	}
 
-
-	public void setHangingLights(String hangingLights) {
-		this.hangingLights = hangingLights;
+	public void setHungingLights(String hungingLights) {
+		this.hungingLights = hungingLights;
 	}
-
-
 }

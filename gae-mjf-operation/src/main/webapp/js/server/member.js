@@ -1,26 +1,60 @@
 MALABARISTAS_APP.factory('memberRepo', ["$http", "$httpParamSerializerJQLike", function($http, $httpParamSerializerJQLike){
 	return {
-		collectSearchingWord:function(){
-			console.log("ログイン確認 &「現在検索中のキーワード」のリクエスト");
+		collectMemberList:function(){
+			console.log("memberリスト取得のリクエスト");
 			return $http({
 				method:"POST",
-				url: "/api/collect-searching-word!request-searching-word",
+				url: "/api/datastore",
 				transformRequest: $httpParamSerializerJQLike,
 				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-				data: {state:"#"}
+				data: {method:"collectMemberList"}
 			});
 		},
-		addMemberRequest: function(name, nameRubi, grade, qualificationOfLight, qualificationOfLightManagement, stage,
-				hangingCurtain, hangingLights){
+		addMemberRequest: function(
+				lastName, firstName, grade,
+				qualificationOfLight, qualificationOfLightManagement,
+				lightOperator, musicOperator, toolPerson,
+				markingStage, linoCovering, stage, seats, twistingBind, tyingBind, guard,
+				hungingCurtain, hungingLights, shoot, foldingCurtain
+				){
 			console.log("登録リクエストの送信");
 			return $http({
 				method:"POST",
 				url: "/api/datastore",
 				transformRequest: $httpParamSerializerJQLike,
 				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-				data: {method:"addMember", name:name, nameRubi:nameRubi, grade:grade, qualificationOfLight:qualificationOfLight,
-					qualificationOfLightManagement:qualificationOfLightManagement, stage:stage,
-					hangingCurtain:hangingCurtain, hangingLights:hangingLights}
+				data: {method:"addMember",
+					lastName:lastName, firstName:firstName, grade:grade,
+					qualificationOfLight:qualificationOfLight, qualificationOfLightManagement:qualificationOfLightManagement,
+					lightOperator:lightOperator, musicOperator:musicOperator, toolPerson:toolPerson,
+					markingStage:markingStage, linoCovering:linoCovering, stage:stage, seats:seats,
+					twistingBind:twistingBind, tyingBind:tyingBind, guard:guard,
+					hungingCurtain:hungingCurtain, hungingLights:hungingLights, shoot:shoot, foldingCurtain:foldingCurtain
+					}
+			});
+		},
+		updateMemberRequest: function(
+				strKey,
+				lastName, firstName, grade,
+				qualificationOfLight, qualificationOfLightManagement,
+				lightOperator, musicOperator, toolPerson,
+				markingStage, linoCovering, stage, seats, twistingBind, tyingBind, guard,
+				hungingCurtain, hungingLights, shoot, foldingCurtain
+				){
+			console.log("登録リクエストの送信 strKey=" + strKey);
+			return $http({
+				method:"POST",
+				url: "/api/datastore",
+				transformRequest: $httpParamSerializerJQLike,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+				data: {method:"updateMember", strKey:strKey,
+					lastName:lastName, firstName:firstName, grade:grade,
+					qualificationOfLight:qualificationOfLight, qualificationOfLightManagement:qualificationOfLightManagement,
+					lightOperator:lightOperator, musicOperator:musicOperator, toolPerson:toolPerson,
+					markingStage:markingStage, linoCovering:linoCovering, stage:stage, seats:seats,
+					twistingBind:twistingBind, tyingBind:tyingBind, guard:guard,
+					hungingCurtain:hungingCurtain, hungingLights:hungingLights, shoot:shoot, foldingCurtain:foldingCurtain
+					}
 			});
 		},
 	}

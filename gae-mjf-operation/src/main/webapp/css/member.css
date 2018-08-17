@@ -10,10 +10,6 @@ body {
 	text-align: center;
 }
 
-.modal_body {
-	background-color: white;
-}
-
 #text-right {
 	text-align: right;
 }
@@ -22,49 +18,28 @@ body {
 	text-align: left;
 }
 
-.search_wrapper {
-	position: fixed;
-	width: 100%;
-	margin-top: 50px;
-}
-
-.search_management {
-	margin-top: 50px;
-}
-
-.search_window {
-	margin: auto;
-	width: 400px;
-	height: 80px;
-	border-radius: 40px;
-	background-color: var(--sub_color);
-	border: solid 1px var(--main_color);
-}
-
-.search_window input {
+.member_wrapper {
 	position: relative;
-	top: 2px;
-	left: 0px;
-	width: 300px;
-	height: 70px;
-	background-color: var(--sub_color);
-	border: 0;
-	outline: 0;
-
-	font-size: 30px;
-	color: var(--main_color);
+	top: 120px;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
 }
 
-.search_window:hover {
-	opacity: 0.9;
-	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
+.modal_body {
+	position: fixed;
+	top: 100px;
+	display: inline-box;
+	width: 100%;
+	height: 80%;
+	overflow: scroll;
+	margin: auto;
+	z-index: 160;
 }
-
 
 .member_add_box {
 	position: relative;
 	margin: auto;
-	margin-top: -30px;
 	padding: 0.5em 1em;
 	border: solid 3px var(--main_color);
 	border-radius: 8px;
@@ -72,6 +47,64 @@ body {
 	background-color: white;
 	box-shadow: 0 4px 6px 0 rgba(0,0,0,.5), 0 4px 4px 0 rgba(0,0,0,.5), 0 2px 4px -1px rgba(0,0,0,.6);
 	z-index: 160;
+}
+
+.member_list {
+	position: relative;
+	margin: auto;
+	padding: 10px;
+}
+
+.member-table {
+	width: 90%;
+	margin: auto;
+	margin-top: 10px;
+	vertical-align: middle;
+	text-align: center;
+	border-collapse: collapse;
+	border: solid 1px #c2c1c3;
+	font-family: "ＭＳ ゴシック", sans-serif;
+}
+
+.member-table th {
+	padding: 5px;
+	background-color: #a3b9e0;
+}
+
+.member-table td {
+	padding: 5px;
+	background-color: white;
+}
+
+.member-table tr {
+	border-bottom: thin dotted #83abb7;
+	border-bottom-style: dotted;
+}
+
+.profile {
+
+}
+
+.profile:hover {
+	opacity: 0.9;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.5), 0 1px 10px 0 rgba(0,0,0,.5), 0 2px 4px -1px rgba(0,0,0,.6);
+	cursor: pointer;
+}
+
+.refresh_btn {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-color: gray;
+	fill: white;
+	border-radius: 10px;
+
+}
+
+.refresh_btn:hover {
+	opacity: 0.9;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.24), 0 1px 10px 0 rgba(0,0,0,.22), 0 2px 4px -1px rgba(0,0,0,.3);
+	cursor: pointer;
 }
 
 .filter_icon {

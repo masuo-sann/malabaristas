@@ -1,28 +1,50 @@
-<div class="search_wrapper" ng-controller="MemberCtrl" ng-init="resetParams()">
-	<div class="search_management">
+<div class="member_wrapper" ng-controller="MemberCtrl" ng-init="resetParams()">
+
+	<!-- いつも表示されている部分 -->
+	<div class="member_management">
 		<form class="search_window">
-			<input name="SearchWord" type="text" ng-model="search_word" placeholder="Member" maxlength="140"/><br>
+			<input name="member" type="text" ng-model="memberSearch" placeholder="Member" maxlength="140"/><br>
 		</form>
 		<a id="add_fab" class="add" ng-click="openModal()">
 			<svg ng-include="'img/icon/add-24px.svg'" width="40px" height="40px" viewbox="0 0 24 24"></svg>
 		</a>
+
+		<div class="member_list">
+			<a class="refresh_btn" ng-click="collectMemberList()">
+				<svg ng-include="'img/icon/refresh-24px.svg'" width="40px" height="40px" viewbox="0 0 24 24"></svg>
+			</a>
+			<table class="member-table">
+				<tr>
+					<th>名前</th>
+					<th>学年</th>
+					<th>いる場所</th>
+					<th>ステータス</th>
+				</tr>
+				<tr ng-repeat="member in memberList | filter : memberSearch" class="profile">
+					<td ng-click="showMore(member)">{{member.lastName}}　{{member.firstName}}</td>
+					<td ng-click="showMore(member)">{{member.grade}}</td>
+					<td ng-click="showMore(member)">{{member.where}}</td>
+					<td ng-click="showMore(member)">{{member.status}}</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 
+	<!--  新規メンバー追加のモーダル  -->
 	<div class="modal_body" ng-show="modalFlag">
 		<div class="member_add_box">
 			<div class="member_add_options">新規メンバーの登録<br>
 				<hr>
 				<form id="option">
-					<a id="question">・氏名(フルネーム)</a>
+					<a id="question">・苗字 (ローマ字)</a>
 					<span id="answer" id="text-right">
-						<input id="text_input" type="text" name="name" ng-model="name" placeholder=" 氏名"/><br>
+						<input id="text_input" type="text" name="lastName" ng-model="lastName" placeholder=" lastName"/><br>
 					</span>
 				</form>
-				<hr>
 				<form id="option">
-					<a id="question">・ふりがな(フルネーム)</a>
+					<a id="question">・名前 (ローマ字)</a>
 					<span id="answer" id="text-right">
-						<input id="text_input" type="text" name="nameRubi" ng-model="nameRubi" placeholder=" ふりがな"/><br>
+						<input id="text_input" type="text" name="firstName" ng-model="firstName" placeholder=" firstName"/><br>
 					</span>
 				</form>
 				<hr>
@@ -46,10 +68,48 @@
 				</form>
 				<hr>
 				<form id="option">
-					<a id="question">・経験</a>
+					<div>
+						<a id="question">・オペレーション</a>
+						<span id="answer" id="text-left">
+							<input id="check3" class="checkbox_input" type="checkbox" ng-model="lightOperator" name="lightOperator" value="true">
+							<label for="check3" class="checkbox_parts"> 　照明オペの経験がある</label><br>
+							<input id="check4" class="checkbox_input" type="checkbox" ng-model="musicOperator" name="musicOperator" value="true">
+							<label for="check4" class="checkbox_parts"> 　音響オペの経験がある</label><br>
+							<input id="check5" class="checkbox_input" type="checkbox" ng-model="toolPerson" name="toolPerson" value="true">
+							<label for="check5" class="checkbox_parts"> 　MJF道具係の経験がある</label>
+						</span>
+					</div>
+				</form>
+				<hr>
+				<form id="option">
+					<a id="question">・設営/撤営経験</a>
+					<span id="answer" id="text-right">
+						<a id="question">・バミリ</a>
+						<input type="text" name="markingStage" pattern="\d*" ng-model="markingStage" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・リノ張り</a>
+						<input type="text" name="linoCovering" pattern="\d*" ng-model="linoCovering" maxlength="3"/>　分<br>
+					</span>
 					<span id="answer" id="text-right">
 						<a id="question">・舞台</a>
 						<input type="text" name="stage" pattern="\d*" ng-model="stage" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・客席</a>
+						<input type="text" name="seats" pattern="\d*" ng-model="seats" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・バインド巻</a>
+						<input type="text" name="twistingBind" pattern="\d*" ng-model="twistingBind" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・バインド固定</a>
+						<input type="text" name="tyingBind" pattern="\d*" ng-model="tyingBind" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・ガードの作成</a>
+						<input type="text" name="guard" pattern="\d*" ng-model="guard" maxlength="3"/>　分<br>
 					</span>
 					<span id="answer" id="text-right">
 						<a id="question">・幕吊り</a>
@@ -59,11 +119,126 @@
 						<a id="question">・灯体吊り</a>
 						<input type="text" name="hungingLights" pattern="\d*" ng-model="hungingLights" maxlength="3"/>　分<br>
 					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・シュート</a>
+						<input type="text" name="shoot" pattern="\d*" ng-model="shoot" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・幕たたみ</a>
+						<input type="text" name="foldingCurtain" pattern="\d*" ng-model="foldingCurtain" maxlength="3"/>　分<br>
+					</span>
 				</form>
 				<hr>
 				<div class="modal-footer">
 					<span id="flat_btn" ng-click="closeModal()">キャンセル</span>
 					<span id="flat_btn" ng-click="addMember()">登録</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--  メンバープロフィール確認・更新のモーダル (中身同じだから共有したい...) -->
+	<div class="modal_body" ng-show="profileModalFlag">
+		<div class="member_add_box">
+			<div class="member_add_options">プロフィールの確認と修正<br>
+				<hr>
+				<form id="option">
+					<a id="question">・苗字 (ローマ字)</a>
+					<span id="answer" id="text-right">
+						<input id="text_input" type="text" name="lastName" ng-model="lastName" placeholder=" lastName"/><br>
+					</span>
+				</form>
+				<form id="option">
+					<a id="question">・名前 (ローマ字)</a>
+					<span id="answer" id="text-right">
+						<input id="text_input" type="text" name="firstName" ng-model="firstName" placeholder=" firstName"/><br>
+					</span>
+				</form>
+				<hr>
+				<form id="option">
+					<a id="question">・学年</a>
+					<span id="answer" id="text-right">
+						<input type="text" name="grade" pattern="\d*" ng-model="grade" placeholder=" 学年" maxlength="2"/>　年<br>
+					</span>
+				</form>
+				<hr>
+				<form id="option">
+					<div>
+						<a id="question">・照明講習会</a>
+						<span id="answer" id="text-left">
+							<input id="check1" class="checkbox_input" type="checkbox" ng-model="qualificationOfLight" name="qualificationOfLight" value="true">
+							<label for="check1" class="checkbox_parts"> 　照明講習会に参加した</label><br>
+							<input id="check2" class="checkbox_input" type="checkbox" ng-model="qualificationOfLightManagement" name="qualificationOfLightManagement" value="true">
+							<label for="check2" class="checkbox_parts"> 　照明責任者講習会に参加した</label>
+						</span>
+					</div>
+				</form>
+				<hr>
+				<form id="option">
+					<div>
+						<a id="question">・オペレーション</a>
+						<span id="answer" id="text-left">
+							<input id="check3" class="checkbox_input" type="checkbox" ng-model="lightOperator" name="lightOperator" value="true">
+							<label for="check3" class="checkbox_parts"> 　照明オペの経験がある</label><br>
+							<input id="check4" class="checkbox_input" type="checkbox" ng-model="musicOperator" name="musicOperator" value="true">
+							<label for="check4" class="checkbox_parts"> 　音響オペの経験がある</label><br>
+							<input id="check5" class="checkbox_input" type="checkbox" ng-model="toolPerson" name="toolPerson" value="true">
+							<label for="check5" class="checkbox_parts"> 　MJF道具係の経験がある</label>
+						</span>
+					</div>
+				</form>
+				<hr>
+				<form id="option">
+					<a id="question">・設営/撤営経験</a>
+					<span id="answer" id="text-right">
+						<a id="question">・バミリ</a>
+						<input type="text" name="markingStage" pattern="\d*" ng-model="markingStage" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・リノ張り</a>
+						<input type="text" name="linoCovering" pattern="\d*" ng-model="linoCovering" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・舞台</a>
+						<input type="text" name="stage" pattern="\d*" ng-model="stage" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・客席</a>
+						<input type="text" name="seats" pattern="\d*" ng-model="seats" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・バインド巻</a>
+						<input type="text" name="twistingBind" pattern="\d*" ng-model="twistingBind" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・バインド固定</a>
+						<input type="text" name="tyingBind" pattern="\d*" ng-model="tyingBind" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・ガードの作成</a>
+						<input type="text" name="guard" pattern="\d*" ng-model="guard" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・幕吊り</a>
+						<input type="text" name="hungingCurtain" pattern="\d*" ng-model="hungingCurtain" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・灯体吊り</a>
+						<input type="text" name="hungingLights" pattern="\d*" ng-model="hungingLights" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・シュート</a>
+						<input type="text" name="shoot" pattern="\d*" ng-model="shoot" maxlength="3"/>　分<br>
+					</span>
+					<span id="answer" id="text-right">
+						<a id="question">・幕たたみ</a>
+						<input type="text" name="foldingCurtain" pattern="\d*" ng-model="foldingCurtain" maxlength="3"/>　分<br>
+					</span>
+				</form>
+				<hr>
+				<div class="modal-footer">
+					<span id="flat_btn" ng-click="closeProfileModal()">キャンセル</span>
+					<span id="flat_btn" ng-click="updateMember()">更新</span>
 				</div>
 			</div>
 		</div>
