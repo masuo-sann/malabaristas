@@ -1,2 +1,5 @@
 /build/
-/lib/
+**/lib/*.jar
+**/apt-lib/*.jar
+/.apt_generated/
+
