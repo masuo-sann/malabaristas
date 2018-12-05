@@ -6,6 +6,8 @@ import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
 import com.google.appengine.api.datastore.Key;
+import com.malabaristas.dto.AbstractDto;
+import com.malabaristas.dto.MemberDto;
 
 /**
  * Modelの変更はHTML上のフォーム、それを受け取るjs、サーバーサイドのMemberDtoおよびMemberListDtoおよび
@@ -14,7 +16,7 @@ import com.google.appengine.api.datastore.Key;
  *
  */
 @Model
-public class Member {
+public class Member extends AbstractModel {
 
 	@Attribute(primaryKey=true)
 	private Key key;
@@ -57,6 +59,16 @@ public class Member {
 	private String status;
 	private int rest;
 
+
+	@Override
+	public AbstractDto toDto() {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setId(id);
+		memberDto.setLastName(lastName);
+		memberDto.setFirstName(firstName);
+		memberDto.setGrade(grade);
+		return memberDto;
+	}
 
 	public Key getKey() {
 		return key;
@@ -297,5 +309,4 @@ public class Member {
 	public void setRest(int rest) {
 		this.rest = rest;
 	}
-
 }
