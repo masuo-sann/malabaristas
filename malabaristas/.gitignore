@@ -2,4 +2,8 @@
 **/lib/*.jar
 **/apt-lib/*.jar
 /.apt_generated/
-
+webapp/index.html
+webapp/*.js
+webapp/*.css
+webapp/*.txt
+webapp/assets/
