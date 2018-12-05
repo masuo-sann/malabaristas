@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+	<threadsafe>true</threadsafe>
+	<sessions-enabled>false</sessions-enabled>
+	<runtime>java8</runtime>
+	<!-- <static-files>
+		<include path="/**/assets/**.png" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+		<include path="/**/*.txt" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+		<include path="/**/favicon.ico" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+		<include path="/webapp/index.html" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+		<include path="/webapp/*.js" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+		<include path="/webapp/*.css" >
+			<http-header name="Access-Control-Allow-Origin" value="*" />
+		</include>
+	</static-files> -->
+	<system-properties>
+	  <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+	</system-properties>
+
+</appengine-web-app>

@@ -105,24 +105,6 @@ public class DatastoreLogic {
 		member.setLastName(req.getParameter(Parameter.LAST_NAME.getName()));
 		member.setFirstName(req.getParameter(Parameter.FIRST_NAME.getName()));
 		member.setGrade(Integer.valueOf(req.getParameter(Parameter.GRADE.getName())).intValue());
-		member.setQualificationOfLight(Boolean.valueOf(req.getParameter(Parameter.QUALIFICATION_OF_LIGHT.getName())).booleanValue());
-		member.setQualificationOfLightManagement(Boolean.valueOf(req.getParameter(Parameter.QUALIFICATION_OF_LIGHT_MANAGEMENT.getName())).booleanValue());Datastore.put(member);
-
-		member.setLightOperator(Boolean.valueOf(req.getParameter(Parameter.LIGHT_OPERATOR.getName())).booleanValue());
-		member.setMusicOperator(Boolean.valueOf(req.getParameter(Parameter.MUSIC_OPERATOR.getName())).booleanValue());
-		member.setToolPerson(Boolean.valueOf(req.getParameter(Parameter.TOOL_PERSON.getName())).booleanValue());
-		member.setMarkingStage(Integer.valueOf(req.getParameter(Parameter.MARKING_STAGE.getName())));
-		member.setLinoCovering(Integer.valueOf(req.getParameter(Parameter.LINO_COVERING.getName())));
-		member.setStage(Integer.valueOf(req.getParameter(Parameter.STAGE.getName())));
-		member.setSeats(Integer.valueOf(req.getParameter(Parameter.SEATS.getName())));
-		member.setTwistingBind(Integer.valueOf(req.getParameter(Parameter.TWISTING_BIND.getName())));
-		member.setTyingBind(Integer.valueOf(req.getParameter(Parameter.TYING_BIND.getName())));
-		member.setGuard(Integer.valueOf(req.getParameter(Parameter.GUARD.getName())));
-		member.setHungingCurtain(Integer.valueOf(req.getParameter(Parameter.HUNGING_CURTAIN.getName())));
-		member.setHungingLights(Integer.valueOf(req.getParameter(Parameter.HUNGING_LIGHTS.getName())));
-		member.setShoot(Integer.valueOf(req.getParameter(Parameter.SHOOT.getName())));
-		member.setFoldingCurtain(Integer.valueOf(req.getParameter(Parameter.FOLDING_CURTAIN.getName())));
-
 		return member;
 	}
 

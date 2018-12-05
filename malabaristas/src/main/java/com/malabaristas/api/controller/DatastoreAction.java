@@ -27,7 +27,11 @@ public class DatastoreAction extends HttpServlet{
 		if(method==null) {
 			LOGGER.warning("supecify method!");
 			return;
-		} else if("collectMemberList".equals(method)) {
+		}
+
+		method = new String(method);
+
+		if("collect-memberList".equals(method)) {
 			DatastoreLogic datastoreLogic = new DatastoreLogic();
 			String json = datastoreLogic.collectMemberList(resp);
 			try (ServletOutputStream sos = resp.getOutputStream()){
@@ -37,7 +41,7 @@ public class DatastoreAction extends HttpServlet{
 				return;
 			}
 			return;
-		} else if("addMember".equals(method)) {
+		} else if("add-member".equals(method)) {
 			DatastoreLogic datastoreLogic = new DatastoreLogic();
 			datastoreLogic.addMember(req);
 			return;
@@ -45,7 +49,7 @@ public class DatastoreAction extends HttpServlet{
 			DatastoreLogic datastoreLogic = new DatastoreLogic();
 			datastoreLogic.updateMember(req);
 		} else {
-			LOGGER.warning("undefiened method");
+			LOGGER.warning("undefiened method: " + method);
 			return;
 		}
     }
