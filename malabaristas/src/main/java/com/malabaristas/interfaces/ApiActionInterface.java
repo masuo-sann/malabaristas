@@ -1,10 +1,13 @@
 package com.malabaristas.interfaces;
 
-import com.malabaristas.dto.AbstractDto;
+import java.io.IOException;
 
-public interface ApiActionInterface {
-	public abstract void setUp();  // req と respをいい感じにする。
-	public abstract void execute();  // ApiBaseActionから呼ばれる。
+import com.malabaristas.dto.AbstractDto;
+import com.malabaristas.model.AbstractModel;
+
+public interface ApiActionInterface<M extends AbstractModel> {
+	public abstract void setUp();  // req　から Dtoを作成
+	public abstract void execute() throws IOException;  // ApiBaseActionから呼ばれる。
 	public abstract String readRequestBody();  // POSTされてきたrequestBodyを読み込む
-	public abstract AbstractDto createJsonObj();  // JSONを取得してJSONObjectにする。
+	public abstract AbstractDto<M> createJsonObj();  // JSONを取得してJSONObjectにする。
 }

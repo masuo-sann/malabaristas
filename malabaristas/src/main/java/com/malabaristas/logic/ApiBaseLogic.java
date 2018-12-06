@@ -24,6 +24,7 @@ public class ApiBaseLogic {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public AbstractAction createAction(HttpServletRequest req, HttpServletResponse resp) throws IllegalArgumentException {
 		String requestUri = req.getRequestURI();
 		String method;
@@ -31,12 +32,12 @@ public class ApiBaseLogic {
 
 		LOGGER.info("[INFO] requestUri = " + requestUri);
 		if(!requestUri.startsWith(_API_)) {
-			LOGGER.warning("requestURI: " + requestUri + " is invalud.");
+			LOGGER.warning("[WARN] requestURI: " + requestUri + " is invalud.");
 			throw new InvalidParameterException("requestURI: " + requestUri + " is invalud.");
 		}
 		String[] splitUri = requestUri.substring(_API_.length()).split(REGEX);  // "/api/"を除いて!で分割
 		if(2 < splitUri.length) {
-			LOGGER.warning("requestURI: " + requestUri + " is invalud.");
+			LOGGER.warning("[WARN] requestURI: " + requestUri + " is invalud.");
 			throw new InvalidParameterException("requestURI: " + requestUri + " is invalud.");
 		} else if (splitUri.length == 1) {
 			method = null;
@@ -46,13 +47,13 @@ public class ApiBaseLogic {
 		try {
 			action = Actions.valueOf(splitUri[0].toUpperCase());
 		} catch (IllegalArgumentException iae) {
-			LOGGER.warning("Illegal value of enum Actions: value=" + splitUri[0]);
+			LOGGER.warning("[WARN] Illegal value of enum Actions: value=" + splitUri[0]);
 			throw iae;
 		}
 		/* APIに関するクラスを追加するときはここに追加 */
 		switch(action) {
 		case MEMBER: return new MemberAction(req, resp, method);
-		default: LOGGER.warning("Unexpected Error"); return null;
+		default: LOGGER.warning("[WARN] Unexpected Error"); return null;
 		}
 	}
 }

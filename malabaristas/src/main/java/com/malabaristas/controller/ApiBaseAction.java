@@ -16,20 +16,27 @@ public class ApiBaseAction extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		LOGGER.warning("Sending API request by GET is not allowed. Please use POST.");
+		LOGGER.warning("[WARN] Sending API request by GET is not allowed. Please use POST.");
 		resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		AbstractAction action;
+		resp.setContentType("application/json");
 		try {
 			action = apiBaseLogic.createAction(req, resp);
 		} catch (IllegalArgumentException e) {
-			LOGGER.warning(e.getMessage());
+			LOGGER.warning("[WARN] " + e.getMessage());
 			return;
 		}
 		action.execute();
     }
+
+	public void doOptions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		LOGGER.info("[INFO] doOption!!");
+		return;
+	}
 }
