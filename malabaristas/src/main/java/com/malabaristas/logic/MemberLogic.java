@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import com.google.gson.Gson;
 import com.malabaristas.dao.MemberDao;
+import com.malabaristas.dto.ApiResponseDto;
 import com.malabaristas.dto.MemberDto;
 import com.malabaristas.model.Member;
 
@@ -23,8 +24,10 @@ public class MemberLogic {
 	public String list() {
 		LOGGER.info("[INFO] list member");
 		List<MemberDto> dtoList = memberDao.dtoList();
-		String memberList = gson.toJson(dtoList);
-		return memberList;
+		ApiResponseDto<List<MemberDto>> apiResponse = new ApiResponseDto<>();
+		apiResponse.setBody(dtoList);
+		apiResponse.setResult("SUCCESS");
+		return gson.toJson(apiResponse);
 	}
 
 	public void update(MemberDto dto) {
